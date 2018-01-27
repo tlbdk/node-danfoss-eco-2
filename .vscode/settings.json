@@ -1,0 +1,4 @@
+{
+    "eslint.autoFixOnSave": true,
+    "javascript.implicitProjectConfig.checkJs": true
+}

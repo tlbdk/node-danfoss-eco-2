@@ -1,0 +1,35 @@
+{
+  "name": "node-danfoss-eco-2",
+  "version": "1.0.0",
+  "description": "Code examples for connecting to Danfoss Eco 2",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tlbdk/node-danfoss-eco-2.git"
+  },
+  "keywords": [],
+  "author": "Troels Liebe Bentsen<troels@nversion.dk>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tlbdk/node-danfoss-eco-2/issues"
+  },
+  "homepage": "https://github.com/tlbdk/node-danfoss-eco-2#readme",
+  "devDependencies": {
+    "@types/noble": "0.0.34",
+    "@types/node": "^9.3.0",
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.15.0",
+    "eslint-plugin-jest": "^21.7.0",
+    "eslint-plugin-prettier": "^2.4.0",
+    "eslint-plugin-react": "^7.5.1",
+    "jest": "^22.1.1",
+    "prettier": "1.9.2"
+  },
+  "dependencies": {
+    "noble": "git@github.com:jacobrosenthal/noble.git#highsierra",
+    "xxtea-node": "^1.1.2"
+  }
+}

@@ -1,0 +1,33 @@
+
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "prettier",
+    "react",
+    "jest"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2016,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "no-unused-vars": "error",
+    "no-undef": "error",
+    "prettier/prettier": ["error", {
+      "singleQuote": true,
+      "semi": false
+    }]
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "mocha": true,
+    "browser": true,
+    "jest": true
+  }
+}
