@@ -28,10 +28,8 @@ noble.on('discover', function(peripheral) {
 
   if (localName === undefined && manufacturerData !== undefined) {
     let payload = Buffer.from(manufacturerData)
-    let hex = payload.toString('hex')
     //console.log(hex)
     let companyId = payload.readUInt16LE(0)
-
     switch (companyId) {
       case 0x0006: {
         // Microsoft
@@ -47,7 +45,8 @@ noble.on('discover', function(peripheral) {
         break
       }
       default: {
-        console.log(`Unknown companyId: ${hex}`)
+        let hex = payload.toString('hex')
+        console.log(`Unknown companyId: ${companyId}`)
       }
     }
   }
