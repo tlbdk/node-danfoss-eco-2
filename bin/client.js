@@ -35,13 +35,23 @@ noble.on('discover', function(peripheral) {
         // Microsoft
         break
       }
+      case 0x004C: {
+        // Apple, Inc.
+        break
+      }
       case 0x00e0: {
         // Google
         break
       }
+      case 0x042F: {
+        // Danfoss A/S
+        break
+      }
       case 0x0499: {
         // Ruuvi Innovations Ltd.
-        console.log(JSON.stringify(parseRuuviTag(payload), null, 2))
+        let result = parseRuuviTag(payload)
+        result.address = peripheral.address
+        console.log(JSON.stringify(result, null, 2))
         break
       }
       default: {
