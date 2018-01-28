@@ -4,7 +4,9 @@
   "description": "Code examples for connecting to Danfoss Eco 2",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack -p --config webpack.config.js",
+    "start:dev": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -25,8 +27,11 @@
     "eslint-plugin-jest": "^21.7.0",
     "eslint-plugin-prettier": "^2.4.0",
     "eslint-plugin-react": "^7.5.1",
+    "html-webpack-plugin": "^2.30.1",
     "jest": "^22.1.1",
-    "prettier": "1.9.2"
+    "prettier": "1.9.2",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
     "noble": "git@github.com:jacobrosenthal/noble.git#highsierra",
