@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/tlbdk/node-danfoss-eco-2#readme",
   "devDependencies": {
+    "@types/jest": "^22.1.0",
     "@types/noble": "0.0.34",
     "@types/node": "^9.3.0",
     "babel-eslint": "^8.2.1",
@@ -29,7 +30,6 @@
     "prettier": "1.9.2"
   },
   "dependencies": {
-    "noble": "git@github.com:jacobrosenthal/noble.git#highsierra",
-    "xxtea-node": "^1.1.2"
+    "noble": "git@github.com:jacobrosenthal/noble.git#highsierra"
   }
 }
