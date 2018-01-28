@@ -1,7 +1,7 @@
 let noble = require('noble')
 
 // https://github.com/ojousima/node-red/blob/master/ruuvi-node/ruuvitag.js
-// https://github.com/ruuvi/com.ruuvi.station/blob/fbb4fa4858e29d46d1ee3230a9299c80783faeee/app/src/main/java/com/ruuvi/station/model/LeScanResult.java
+// https://github.com/ruuvi/com.ruuvi.station/blob/fbb4fa4858e29d46d1ee3230a9299c80783faeee/app/src/main/java/com/ruuvi/station/model/RuuviTag.java
 
 console.log(noble.state)
 
@@ -35,13 +35,23 @@ noble.on('discover', function(peripheral) {
         // Microsoft
         break
       }
+      case 0x004C: {
+        // Apple, Inc.
+        break
+      }
       case 0x00e0: {
         // Google
         break
       }
+      case 0x042F: {
+        // Danfoss A/S
+        break
+      }
       case 0x0499: {
         // Ruuvi Innovations Ltd.
-        console.log(JSON.stringify(parseRuuviTag(payload), null, 2))
+        let result = parseRuuviTag(payload)
+        result.address = peripheral.address
+        console.log(JSON.stringify(result, null, 2))
         break
       }
       default: {
@@ -73,9 +83,11 @@ function parseRuuviTag(payload) {
       }
       temperature = +temperature.toFixed(2)
 
-      let pressure = payload.readInt16LE(6)
-      //pressure += 50000
-
+      let pressureHi = payload.readUInt8(6)
+      let pressureLo = payload.readUInt8(7)
+      let pressure = pressureHi * 256 + 50000 + pressureLo;
+      pressure /= 100.0;
+      
       let accelerationX = payload.readUInt16LE(8) // milli-g
       if (accelerationX > 32767) {
         accelerationX -= 65536
@@ -91,15 +103,17 @@ function parseRuuviTag(payload) {
         accelerationZ -= 65536
       }
 
-      let battery = payload.readUInt16LE(14)
-
+      let batteryHi = payload.readUInt8(14);
+      let batteryLo = payload.readUInt8(14);
+      let batteryVoltage = (batteryHi * 256 + batteryLo) / 1000.0;
+      
       return {
         humidity,
         temperature,
         accelerationX,
         accelerationY,
         accelerationZ,
-        battery,
+        batteryVoltage,
         pressure
       }
     }
