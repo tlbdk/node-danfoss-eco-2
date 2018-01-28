@@ -1,7 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Devices from './devices'
+import RequestDevices from './requestDevices'
 
-const Index = () => <Devices />
+const Index = () => (
+  <div>
+    <RequestDevices />
+  </div>
+)
 
 ReactDOM.render(<Index />, document.getElementById('container'))
