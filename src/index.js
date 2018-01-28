@@ -1,8 +1,7 @@
-function component() {
-  var element = document.createElement('div')
-  element.innerHTML = 'hello world'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Devices from './devices'
 
-  return element
-}
+const Index = () => <Devices />
 
-document.body.appendChild(component())
+ReactDOM.render(<Index />, document.getElementById('container'))
