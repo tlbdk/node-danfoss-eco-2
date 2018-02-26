@@ -30,6 +30,6 @@
     "prettier": "1.9.2"
   },
   "dependencies": {
-    "noble": "git@github.com:jacobrosenthal/noble.git#highsierra"
+    "noble": "^1.9.0"
   }
 }

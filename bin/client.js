@@ -35,7 +35,7 @@ noble.on('discover', function(peripheral) {
         // Microsoft
         break
       }
-      case 0x004C: {
+      case 0x004c: {
         // Apple, Inc.
         break
       }
@@ -43,8 +43,12 @@ noble.on('discover', function(peripheral) {
         // Google
         break
       }
-      case 0x042F: {
+      case 0x042f: {
         // Danfoss A/S
+        break
+      }
+      case 0x0075: {
+        // Samsung Electronics Co. Ltd.
         break
       }
       case 0x0499: {
@@ -85,9 +89,9 @@ function parseRuuviTag(payload) {
 
       let pressureHi = payload.readUInt8(6)
       let pressureLo = payload.readUInt8(7)
-      let pressure = pressureHi * 256 + 50000 + pressureLo;
-      pressure /= 100.0;
-      
+      let pressure = pressureHi * 256 + 50000 + pressureLo
+      pressure /= 100.0
+
       let accelerationX = payload.readUInt16LE(8) // milli-g
       if (accelerationX > 32767) {
         accelerationX -= 65536
@@ -103,10 +107,10 @@ function parseRuuviTag(payload) {
         accelerationZ -= 65536
       }
 
-      let batteryHi = payload.readUInt8(14);
-      let batteryLo = payload.readUInt8(14);
-      let batteryVoltage = (batteryHi * 256 + batteryLo) / 1000.0;
-      
+      let batteryHi = payload.readUInt8(14)
+      let batteryLo = payload.readUInt8(14)
+      let batteryVoltage = (batteryHi * 256 + batteryLo) / 1000.0
+
       return {
         humidity,
         temperature,
